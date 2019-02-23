@@ -1,0 +1,140 @@
+body{
+    background-color: #404040;
+    font-family: 'Lato', sans-serif;
+}
+
+#container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#logo{
+    color: white;
+    margin-top: 20px;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+#topbar
+{
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    height: 190px;
+}
+
+#topbarL
+{
+    float:left;
+    padding: 20px;
+    width: 138px;
+    text-align: center;
+    border-right: 2px dotted #666666;
+}
+
+#topbarR
+{
+    float: left;
+    padding: 20px;
+    width: 760px;
+    font-size: 16px;
+    text-align: justify;
+}
+
+#menu{
+    float: left;
+    width: 148px;
+    min-height: 320px;
+    padding: 20px;
+    background-color: lightgray;
+    text-align: center;
+    font-size: 16px;
+    border-right: 2px dotted #666666;
+}
+
+.option
+{
+    font-size:18px;
+    height:25px;
+    padding: 10px;
+    border-bottom: 2px dotted #444444;
+}
+
+.option:hover
+{
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.bigtitle
+{
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+#content
+{
+    float: left;
+    padding: 40px;
+    width: 930px;
+    background-color: #dedede;
+    min-height: 580px;
+    text-align: justify;
+}
+
+.dottedline
+{
+    height: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px dotted #444444;
+}
+#footer
+{
+    clear: both;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#formularz{
+    width: 300px;
+}
+
+input{
+    float: right;
+}
+
+li > a{
+    color: orangered;
+}
+table,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+}
+table{
+    font-size: 11px;
+    white-space: nowrap;
+}
+td > a{
+    color: orangered;
+}
+
+p > a{
+    color:orangered;
+}

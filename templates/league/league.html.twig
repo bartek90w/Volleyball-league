@@ -1,0 +1,20 @@
+{# templates/league/league.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+            <div id="formularz">
+                {{ form_start(form) }}
+                <p>{{ form_row(form.name) }}</p>
+                <p>{{ form_row(form.teamsCount) }}</p>
+                <p>{{ form_row(form.city) }}</p>
+                <p>{{ form_row(form.save) }}</p>
+                {{ form_end(form) }}
+            </div>
+         {% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,73 @@
+{# templates/league/league.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+             <p><b>Nazwa ligi: </b>{{ league.name }}</p>
+             <p><b>Miasto: </b>{{ league.city }}</p>
+             <p><b>Liczba drużyn: </b>{{ league.teamsCount }}</p>
+             <p><b>Właściciel ligi: </b>{{ league.owner.email }}</p>
+             <p><b>Drużyny: </b></p>
+             {% for team in league.teams %}
+             <li>{{ team.name }}</li>
+             {% endfor %}
+             <p><a href="/delete_league">Usuń ligę</a></p>
+             <p><a href="/quit_league">Opuść ligę</a></p>
+
+             <table>
+                 <tr>
+                     <th rowspan="2"></th>
+                     <th rowspan="2">Drużyna</th>
+                     <th rowspan="2">Punkty</th>
+                     <th colspan="3">Mecze</th>
+                     <th colspan="2">Sety</th>
+                     <th colspan="2">Punkty</th>
+                     <th colspan="2">Stosunek</th>
+                     <th colspan="6">Wynik</th>
+                 </tr>
+                 <tr>
+                     <th>Rozegr.</th>
+                     <th>Wygr.</th>
+                     <th>Przegr.</th>
+                     <th>Wygr.</th>
+                     <th>Przegr.</th>
+                     <th>Wygr.</th>
+                     <th>Przegr.</th>
+                     <th>Sety</th>
+                     <th>Punkty</th>
+                     <th>3-0</th>
+                     <th>3-1</th>
+                     <th>3-2</th>
+                     <th>2-3</th>
+                     <th>1-3</th>
+                     <th>0-3</th>
+                 </tr>
+
+                 {% for row in leagueTable %}
+                     <td>{{ loop.index }}</td>
+                     <td>{{ row.team.name }}</td>
+                     <td>{{ row.points }}</td>
+                     <td>{{ row.matchesPlayed }}</td>
+                     <td>{{ row.matchesWin }}</td>
+                     <td>{{ row.matchesLost }}</td>
+                     <td>{{ row.setsWin }}</td>
+                     <td>{{ row.setsLost }}</td>
+                     <td>{{ row.pointsWin }}</td>
+                     <td>{{ row.pointsLost }}</td>
+                     <td>{% if row.setsLost != 0 %}{{ (row.setsWin / row.setsLost)|round(4) }}{% else %}0{% endif %}</td>
+                     <td>{% if row.pointsLost != 0 %}{{ (row.pointsWin / row.pointsLost)|round(4)}}{% else %}0{% endif %}</td>
+                     <td>{{ row.result30 }}</td>
+                     <td>{{ row.result31 }}</td>
+                     <td>{{ row.result32 }}</td>
+                     <td>{{ row.result23 }}</td>
+                     <td>{{ row.result13 }}</td>
+                     <td>{{ row.result03 }}</td>
+                 {% endfor %}
+             </table>
+         {% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,136 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
+ */
+class Team
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="team", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $captain;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="team")
+     */
+    private $players;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\League", inversedBy="teams")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    private $league;
+
+    public function __construct()
+    {
+        $this->players = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCaptain(): ?User
+    {
+        return $this->captain;
+    }
+
+    public function setCaptain(User $captain): self
+    {
+        $this->captain = $captain;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getPlayers(): Collection
+    {
+        return $this->players;
+    }
+
+    public function addPlayer(User $player): self
+    {
+        if (!$this->players->contains($player)) {
+            $this->players[] = $player;
+            $player->setTeam($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayer(User $player): self
+    {
+        if ($this->players->contains($player)) {
+            $this->players->removeElement($player);
+            // set the owning side to null (unless already changed)
+            if ($player->getTeam() === $this) {
+                $player->setTeam(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLeague(): ?League
+    {
+        return $this->league;
+    }
+
+    public function setLeague(?League $league): self
+    {
+        $this->league = $league;
+
+        return $this;
+    }
+}

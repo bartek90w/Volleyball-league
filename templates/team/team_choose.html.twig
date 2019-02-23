@@ -1,0 +1,25 @@
+{# templates/team/team_choose.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+             <table>
+                 <tr><th>Nazwa drużyny</th><th>Miasto</th><th>Kapitan</th><th>Liga</th><th>Dołącz</th></tr>
+                 {% for team in teams %}
+                     <td>{{ team.name }}</td>
+                     <td>{{ team.city }}</td>
+                     <td>{{ team.captain.email }}</td>
+                     {% if team.league %}
+                     <td>{{ team.league.name }}</td>
+                     {% else %}
+                         <td>Brak</td>
+                     {% endif %}
+                      <td><a href="{{ path('join_team', {'team_id': team.id}) }}">Wybierz</a></td>
+                 {% endfor %}
+             </table>
+         {% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

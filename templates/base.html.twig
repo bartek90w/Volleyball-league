@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Zarządzaj swoją ligą siatarską!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('main.css') }}" rel="stylesheet" />
+            <link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        {% endblock %}
+    </head>
+    <body>
+        {% block other %}
+            <div id="container">
+                <div id="logo">
+                    Zarządzaj swoją ligą siatkarską!
+                </div>
+                <div id="topbar">
+                    <div id="topbarL">
+                        <img src="{{ asset('logo.png') }}">
+                    </div>
+                    <div id="topbarR">
+                        <span class="bigtitle">O projekcie słów kilka</span>
+                        <div style="height: 15px;"></div>
+                        Jesteś fanem siatkówki? Chcesz uporządkować swoje rozgrywki i efektywnie zarządzać swoją ligą? Świetnie trafiłeś! Zapoznaj się z naszym serwisem i zobacz jak proste i przyjemne będzie zarządzannie Twoją amatorską ligą!
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div id="menu">
+                    <a href="/"><div class="option">Strona główna</div></a>
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="/register"><div class="option">Rejestracja</div></a>
+                        <a href="/login"><div class="option">Zaloguj się</div></a>
+                    {% endif %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="/team"><div class="option">Moja drużyna</div></a>
+                        <a href="/league"><div class="option">Moja liga</div></a>
+                        <a href="/logout"><div class="option">Wyloguj się</div></a>
+                    {% endif %}
+                </div>
+                {% endblock %}
+                <div id="content">
+                    {% block body %}
+                        <span class="bigtitle">Jak zacząć?</span>
+
+                        <div class="dottedline"></div>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquet sollicitudin dolor, vel egestas augue. Aliquam iaculis venenatis velit, volutpat laoreet mi luctus vitae. Etiam tincidunt nibh massa, ac imperdiet ipsum sagittis sed. Nam scelerisque ante nibh, eu vehicula purus lobortis ut. Phasellus et pretium sapien, eu tincidunt sem. Duis dictum vulputate sapien, id finibus dui varius vel. Vestibulum elit arcu, dignissim nec tortor ac, dictum accumsan lectus. Donec suscipit arcu ipsum. Duis sed tellus tempor, maximus mi quis, commodo justo. Curabitur et finibus dolor. Aenean et risus lorem. Aliquam massa diam, sodales at purus dictum, bibendum congue dui. Donec ullamcorper lorem vitae lobortis gravida. Morbi facilisis a odio eu tempor. Cras eros tellus, maximus sed nisl maximus, auctor varius justo.
+
+                        Donec et quam faucibus, posuere velit nec, lacinia quam. Vestibulum quis rutrum tortor. Sed at mi a felis facilisis auctor. Morbi mollis vel lectus vitae malesuada. Donec porttitor mi id vulputate molestie. Duis luctus blandit eros ac facilisis. Vestibulum odio tellus, cursus sed nibh et, scelerisque ornare mauris. Fusce dictum tempus maximus. Proin eu sapien eu nibh facilisis vulputate et ac mi. Sed eu eros sit amet enim tincidunt semper. Etiam eu cursus mauris. Suspendisse in enim justo. Phasellus fringilla arcu ligula, et ultricies arcu convallis id. Sed vitae auctor mauris. Quisque vel purus ipsum.
+
+                        Maecenas facilisis venenatis quam. Integer justo ante, congue ac odio vel, feugiat efficitur enim. Cras in diam nec nulla tempus iaculis. Praesent fermentum, magna sit amet iaculis eleifend, sapien tortor luctus felis, ut vehicula dolor quam ultricies ex. Phasellus facilisis metus gravida luctus congue. Proin velit quam, ullamcorper posuere mollis id, auctor ut ante. Sed sed malesuada metus. Morbi leo magna, efficitur ornare quam sit amet, venenatis accumsan nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec aliquet metus et dapibus viverra. Quisque lobortis porta dui, ut pellentesque neque tempus eu. Nulla ornare nisi elementum metus iaculis accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum in ante ac porttitor.
+
+                        Nulla id diam id diam tristique pellentesque a quis leo. Ut tempor commodo metus, a feugiat orci ullamcorper consectetur. Fusce fermentum dictum elit, eu mattis augue porta sit amet. Nunc suscipit aliquet enim in mattis. Nam elementum interdum volutpat. Nulla suscipit dolor eget turpis dignissim, et porttitor urna gravida. Fusce non aliquam magna. Quisque tincidunt rhoncus maximus.
+
+                        Curabitur non dapibus elit. Nulla ut quam ut magna eleifend auctor ut vitae massa. Aenean elementum vitae neque non porttitor. Quisque turpis dui, tincidunt nec placerat id, rhoncus id ex. Duis metus diam, scelerisque a dui non, semper elementum nunc. Fusce interdum mauris eget neque ornare vestibulum. Donec tempus ante mauris, et laoreet mauris auctor et. Proin mauris urna, suscipit vitae augue vel, rutrum venenatis sem. Quisque fermentum risus augue, commodo lobortis risus congue et. Nunc est ex, imperdiet nec vehicula finibus, ullamcorper finibus leo. Sed at lacus et lacus mollis bibendum. Aenean laoreet rutrum ipsum nec mollis. Aenean id dui eget sem sollicitudin molestie nec in augue. Nam quis diam venenatis, fermentum nisi sit amet, volutpat velit.
+                    {% endblock %}
+                </div>
+
+
+                <div id="footer">
+                    {% block footer %}
+                    Zarządzaj swoją ligą siatkarską &copy; Wszelkie prawa zastrzeżone
+                    {% endblock %}
+                </div>
+
+            </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{# templates/league/league_choose.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+             <table>
+                 <tr><th>Nazwa ligi</th><th>Max liczba drużyn</th><th>Miasto</th><th>Właściciel</th><th>Dołącz</th></tr>
+                 {% for league in leagues %}
+                    <td>{{ league.name }}</td>
+                    <td>{{ league.teamsCount }}</td>
+                    <td>{{ league.city }}</td>
+                    <td>{{ league.owner.email }}</td>
+                    <td><a href="{{ path('join_league', {'league_id': league.id}) }}">Wybierz</a></td>
+                 {% endfor %}
+             </table>
+         {% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

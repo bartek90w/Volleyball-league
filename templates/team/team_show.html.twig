@@ -1,0 +1,23 @@
+{# templates/team/team_show.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+             <p><b>Nazwa drużyny: </b>{{ team.name }}</p>
+             <p><b>Miasto: </b>{{ team.city }}</p>
+             <p><b>Kapitan: </b>{{ team.captain.email }}</p>
+             <p><b>Liga: </b>
+             {% if team.league %}
+                {{ team.league.name }}
+             {% else %}
+                 <a href="/league">Dołącz do ligi</a>
+             {% endif %}</p>
+             <p><a href="/delete_team">Usuń drużynę</a></p>
+             <p><a href="/quit_team">Opuść drużynę</a></p>
+         {% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

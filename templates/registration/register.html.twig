@@ -1,0 +1,16 @@
+{# templates/registration/register.html.twig #}
+{% extends '/base.html.twig' %}
+{% block title %}Załóż konto!{% endblock %}
+         {% block body %}
+             <div id="formularz">
+                 <h1 class="h3 mb-3 font-weight-normal">Załóż konto</h1>
+             {{ form_start(form) }}
+             <p>{{ form_row(form.username) }}</p>
+             <p>{{ form_row(form.email) }}</p>
+             <p>{{ form_row(form.plainPassword.first) }}</p>
+             <p>{{ form_row(form.plainPassword.second) }}</p>
+
+             <button type="submit">Register!</button>
+             {{ form_end(form) }}
+             </div>
+         {% endblock %}

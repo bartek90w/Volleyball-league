@@ -1,0 +1,15 @@
+{# templates/league/no_league.html.twig #}
+{% extends '/base.html.twig' %}
+{% block other %}
+    {{ parent() }}
+{% endblock %}
+         {% block body %}
+             <h1>Twoja drużyna nie należy do żadnej ligi!</h1>
+             <li><a href="/add_league">Dodaj swoją ligę</a></li>
+             <li><a href="/choose_league">Dołącz do istniejącej ligi</a></li>
+         {% endblock %}
+
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}
